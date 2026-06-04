@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --bg-main: HSL(222, 25%, 7%);
+  --bg-card: hsla(222, 20%, 12%, 0.75);
+  --bg-board: HSL(222, 20%, 10%);
+  --bg-lane: hsla(222, 20%, 14%, 0.5);
+  --bg-input: HSL(222, 20%, 15%);
+  
+  --color-primary: HSL(270, 85%, 60%);
+  --color-primary-glow: hsla(270, 85%, 60%, 0.4);
+  --color-secondary: HSL(190, 95%, 45%);
+  --color-secondary-glow: hsla(190, 95%, 45%, 0.4);
+  --color-warning: HSL(38, 95%, 55%);
+  --color-warning-glow: hsla(38, 95%, 55%, 0.4);
+  --color-success: HSL(145, 80%, 45%);
+  --color-success-glow: hsla(145, 80%, 45%, 0.4);
+  --color-error: HSL(355, 85%, 55%);
+  --color-error-glow: hsla(355, 85%, 55%, 0.4);
+  
+  --text-main: HSL(210, 20%, 95%);
+  --text-muted: HSL(210, 10%, 65%);
+  --text-dark: HSL(222, 25%, 15%);
+  
+  --border: hsla(220, 15%, 22%, 0.55);
+  --border-active: hsla(270, 85%, 65%, 0.65);
+  
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  --glass-blur: blur(12px);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  height: 100vh;
+  background-image: 
+    radial-gradient(at 10% 20%, hsla(270, 85%, 60%, 0.06) 0px, transparent 50%),
+    radial-gradient(at 90% 80%, hsla(190, 95%, 45%, 0.05) 0px, transparent 50%);
+}
+
+#root {
+  height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Common Layout Components */
+.glass {
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* Glow Elements */
+.glow-primary {
+  box-shadow: 0 0 15px var(--color-primary-glow);
+}
+.glow-secondary {
+  box-shadow: 0 0 15px var(--color-secondary-glow);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px var(--pulse-color, var(--color-primary-glow));
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--pulse-color, var(--color-primary-glow));
+    transform: scale(1.03);
+  }
+  100% {
+    box-shadow: 0 0 5px var(--pulse-color, var(--color-primary-glow));
+    transform: scale(1);
+  }
+}
+
+@keyframes line-flow {
+  0% {
+    stroke-dashoffset: 24;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.pulse {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+/* Drag and Drop Effects */
+.drag-over {
+  background: rgba(147, 51, 234, 0.08) !important;
+  border: 1.5px dashed var(--color-primary) !important;
+}
+
+.dragging {
+  opacity: 0.5;
+  transform: rotate(-1deg);
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5 {
+  letter-spacing: -0.02em;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--color-secondary);
+}
